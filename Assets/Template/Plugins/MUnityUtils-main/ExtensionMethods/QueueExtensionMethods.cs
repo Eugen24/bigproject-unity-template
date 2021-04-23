@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Template.Plugins.MUnityUtils.ExtensionMethods
+namespace MUnityUtils.ExtensionMethods
 {
     public static class QueueExtensionMethods
     {

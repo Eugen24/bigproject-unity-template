@@ -1,10 +1,10 @@
 ﻿using System;
-using Template.Plugins.MUnityUtils.StateMachine;
+using MUnityUtils.StateMachine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-namespace Template.Plugins.MUnityUtils.StateMachine.Editor
+namespace MUtils.StateMachine.Editor
 {
     [CustomEditor(typeof(MUnityUtils.StateMachine.StateMachine))]
     public class Editor : UnityEditor.Editor

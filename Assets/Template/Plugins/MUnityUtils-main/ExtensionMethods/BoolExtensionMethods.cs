@@ -1,4 +1,4 @@
-﻿namespace Template.MUnityUtils.ExtensionMethods
+﻿namespace MUnityUtils.ExtensionMethods
 {
     public static class BoolExtensionMethods
     {

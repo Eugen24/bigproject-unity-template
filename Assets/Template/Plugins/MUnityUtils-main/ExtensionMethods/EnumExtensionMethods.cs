@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Template.Plugins.MUnityUtils.ExtensionMethods
+namespace MUnityUtils.ExtensionMethods
 {
     public static class EnumExtensionMethods
     {

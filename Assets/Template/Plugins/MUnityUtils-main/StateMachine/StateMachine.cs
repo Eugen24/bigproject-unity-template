@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Template.Plugins.MUnityUtils.StateMachine
+namespace MUnityUtils.StateMachine
 {
     public class StateMachine : MonoBehaviour
     {

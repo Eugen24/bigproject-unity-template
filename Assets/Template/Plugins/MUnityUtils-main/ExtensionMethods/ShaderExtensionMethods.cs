@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 
-namespace Template.Plugins.MUnityUtils.ExtensionMethods
+namespace MUnityUtils.ExtensionMethods
 {
     public static class ShaderExtensionMethods
     {
          public enum BlendMode
-         {
+        {
             Opaque = 0,
             Cutout = 1,
             Fade = 2,
             Transparent = 3
-         }
+        }
 
          public static void ChangeRenderMode(this Material material, BlendMode blendMode)
          {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Template.Plugins.MUnityUtils.ExtensionMethods
+namespace MUnityUtils.ExtensionMethods
 {
     public static class ColorExtensionMethods
     {

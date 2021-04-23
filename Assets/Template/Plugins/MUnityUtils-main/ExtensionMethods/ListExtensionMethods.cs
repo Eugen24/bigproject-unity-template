@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Template.Plugins.MUnityUtils.ExtensionMethods
+namespace MUnityUtils.ExtensionMethods
 {
     public static class ListExtensionMethods
     {
