@@ -9,7 +9,7 @@ Get last release here: https://github.com/Eugen24/highproject-template/releases/
 - In Build settings first scene should be FirstScene.unity
 - Every scene should have System.prefab
 - All scriptable objects should be in Assets/_Project/Scripts/Configs
-- Git ignore: https://github.com/Geekongames/unity-template/blob/master/Assets/_Project/.gitignore
+- Git ignore: https://github.com/Eugen24/highproject-template/blob/main/.gitignore
 
 ## Library includes:
 - DI 
