@@ -1,21 +1,7 @@
-# highproject-template
-Template for creating HighProject Games Easy
+# Template for creating HighProject Games Easy
 
-- Releases for Download Package
-- Link: https://github.com/Eugen24/highproject-template/releases/tag/0.2
-# Template Library for fast development of hypercasual games.
-Get last release here: https://github.com/Zen12/unity-template/releases
-
-## Lion Integration
-#### Integration
-Go to Window->Geekongames->AddLionSDK. Wait until you see success log. 
-####
-
-#### Configuration
-Go To Window->Geekongames->OpenConfig. You should see a scriptableObject selected. Field all the Ids and press "ApplyIds". If you don't see "ApplyIds" button, you need to Integrate and SDK!
-You need to make commit and push.
-
-
+- Download Package
+Get last release here: https://github.com/Eugen24/highproject-template/releases/tag/0.2
 
 ## General Conventions
 #### Project Conventions:
