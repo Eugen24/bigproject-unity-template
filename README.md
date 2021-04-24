@@ -1,2 +1,2 @@
-# editegames-highproject-template
+# highproject-template
 Template for creating HighProject Games Easy
