@@ -3,34 +3,57 @@ Template for creating HighProject Games Easy
 
 - Releases for Download Package
 - Link: https://github.com/Eugen24/highproject-template/releases/tag/0.2
+# Template Library for fast development of hypercasual games.
+Get last release here: https://github.com/Zen12/unity-template/releases
 
-General Conventions
-Project Conventions:
-Every project should be in Assets/_Project
-In Build settings first scene should be FirstScene.unity
-Every scene should have System.prefab
-All scriptable objects should be in Assets/_Project/Scripts/Configs
-Git ignore: https://github.com/Geekongames/unity-template/blob/master/Assets/_Project/.gitignore
-Library includes:
-DI
-Signals
-Scene progression
-Pool
-Default SDKs for publishing (Facebook, GA, etc...)
-Other small tools for math and animations
-MultiThread savable system
-Effects
-DI
-Description:
-This is simple dependency-injection tool to fit hyper-casual use. As reference is used Zenject, but is developed with the idea 'Simple-Zenject'.
+## Lion Integration
+#### Integration
+Go to Window->Geekongames->AddLionSDK. Wait until you see success log. 
+####
 
-How to use
-There is prefab System (Assets/_Project/Prefabs/Core/System.prefab). This prefab is present in all scenes. All scripts that are attached to this gameObject(and children) is consider Singletons and will be Injected in all scripts in scene (MonoBehaviours).
+#### Configuration
+Go To Window->Geekongames->OpenConfig. You should see a scriptableObject selected. Field all the Ids and press "ApplyIds". If you don't see "ApplyIds" button, you need to Integrate and SDK!
+You need to make commit and push.
 
-For example: there is AdsSystem.cs, in order to get it from other script, the script requires to inherit from InjectedMono.
 
-For example open sample scene in Template/Samples/DI/DI.unity. In System, there is InputSystem. InputSystem is responsive for Handling Inputs. In Player, there is PlayerController, InputSystem is injected in PlayerController.
 
+## General Conventions
+#### Project Conventions:
+- Every project should be in Assets/_Project
+- In Build settings first scene should be FirstScene.unity
+- Every scene should have System.prefab
+- All scriptable objects should be in Assets/_Project/Scripts/Configs
+- Git ignore: https://github.com/Geekongames/unity-template/blob/master/Assets/_Project/.gitignore
+
+## Library includes:
+- DI 
+- Signals
+- Scene progression 
+- Pool
+- Default SDKs for publishing (Facebook, GA, etc...)
+- Other small tools for math and animations
+- MultiThread savable system
+- Effects
+
+## DI
+#### Description:
+This is simple dependency-injection tool to fit hyper-casual use.
+As reference is used Zenject, but is developed with the idea 'Simple-Zenject'.
+
+#### How to use
+There is prefab System (Assets/_Project/Prefabs/Core/System.prefab). 
+This prefab is present in all scenes. All scripts that are attached to this gameObject(and children) 
+is consider Singletons and will be Injected in all scripts in scene (MonoBehaviours).
+
+For example: there is AdsSystem.cs, 
+in order to get it from other script, the script requires to 
+inherit from InjectedMono.
+
+For example open sample scene in Template/Samples/DI/DI.unity.
+In System, there is InputSystem. InputSystem is responsive for Handling Inputs. 
+In Player, there is PlayerController, InputSystem is injected in PlayerController.
+
+```c#
 using Template.Scripts.DI;
 using UnityEngine;
 
@@ -63,6 +86,8 @@ namespace Template.Samples.DI
         }
     }
 }
+```
+
 Attribute [In] is responsive for InjectionFlag.
 
 Try to avoid using Awake. It might give nullref.
@@ -71,6 +96,7 @@ This script also applies to Instantiate.
 
 As additional tool, there is attribute [Get], it makes a GetComponent during Injection. Example (Also available in DI scene):
 
+```c#
 using Template.Scripts.DI;
 using UnityEngine;
 
@@ -86,12 +112,16 @@ namespace Template.Samples.DI
         }
     }
 }
+```
+
 [GetChild] is for GetComponentInChildren.
 
-In case you need a Singleton-Injection but for some reasons it's not reasonable to attached it to System Prefab. You can use Single, example is in Template/Samples/DI/SingleDI.unity. You just need to inherit from SingleMono.
+In case you need a Singleton-Injection but for some reasons it's not reasonable to attached it to System Prefab. You can use Single, example is in Template/Samples/DI/SingleDI.unity.
+You just need to inherit from SingleMono. 
 
 In System, there is InputSystem(previous one). And there are 2 more scripts:
 
+```c#
 using Template.Scripts.DI;
 using UnityEngine;
 
@@ -121,8 +151,11 @@ namespace Template.Samples.DI
         
     }
 }
+```
+
 and
 
+```c#
 using System;
 using Template.Scripts.DI;
 using UnityEngine;
@@ -158,10 +191,13 @@ namespace Template.Samples.DI
         }
     }
 }
+```
+
 You CAN NOT attach SingleMono ot System prefab!!!
 
+#
 In case you need an ordered events, for example you want to fire a signal at start but you want to be sure that everybody is subscribe. It is possible to override OnSyncStart and OnSyncAfterStart, here is example:
-
+```c#
 public class SyncExample : InjectedMono
 {
     public override void OnSyncStart()
@@ -174,19 +210,26 @@ public class SyncExample : InjectedMono
         Debug.Log("OnSyncAfterStart");
     }
 }
+
+```
+
 In case of Instantiate, this methods will be called after instantiating
 
-Signals
-Description:
+## Signals
+
+#### Description:
+
 Signals are events where you can add additional data.
 
-How to use
-First of all you need to inject SignalBus. You just need to inherit from InjectedMono. And you will get _signalBus variable.
+#### How to use
+
+First of all you need to inject SignalBus. You just need to inherit from InjectedMono. 
+And you will get _signalBus variable.
 
 You can open Template/Samples/Signals/Signals.unity.
 
 Example of sending event:
-
+```c#
 using Template.Scripts.DI;
 using UnityEngine;
 
@@ -216,8 +259,11 @@ namespace Template.Samples.Signals
         public bool IsLeft { get; internal set; }
     }
 }
+```
+
 Example of receiving event:
 
+```c#
 using Template.Scripts.DI;
 using UnityEngine;
 
@@ -254,15 +300,21 @@ namespace Template.Samples.Signals
         }
     }
 }
-You can use only structs as sending signal data. You can use structs with no fields. After scene is reloaded unsubscribe is done automatically, if you need to unsubscribe you can use UnSub method.
+```
+You can use only structs as sending signal data. You can use structs with no fields.
+After scene is reloaded unsubscribe is done automatically, if you need to unsubscribe you can use UnSub method.
 
-Scene Progression
-Description:
-Progression Scene is relevant only for scene. To it is attached analytics, Prefs-Save and UI. Prefab-base currently isn't supported.
+## Scene Progression
 
-How to use
+#### Description:
+Progression Scene is relevant only for scene. To it is attached analytics, Prefs-Save and UI. 
+Prefab-base currently isn't supported.
+
+
+#### How to use 
+
 Everything is done via signals, here is the example:
-
+```c#
     public class Example : InjectedMono
     {
         [SerializeField] private Text _text;
@@ -302,9 +354,16 @@ Everything is done via signals, here is the example:
                 { AmountOfPoints = 20, IsWin = true, ShowPoints = true});
         }
     }
-How to use SceneProgression.cs
-There is a setup at FirstScene.unity, it should be first in BuildSettings. In order to Move to next level you need to call _sceneProgression.LoadNextScene, in order to reload you need to call _sceneProgression.ReloadScene. Here are examples:
+```
 
+
+#### How to use SceneProgression.cs
+
+There is a setup at FirstScene.unity, it should be first in BuildSettings. 
+In order to Move to next level you need to call _sceneProgression.LoadNextScene, 
+in order to reload you need to call _sceneProgression.ReloadScene. Here are examples:
+
+```c#
 public class ExampleMoveScene : InjectedMono
 {
 
@@ -323,15 +382,18 @@ public class ExampleMoveScene : InjectedMono
         _sceneProgression.ReloadScene();
     }
 }
+```
+
 You can use buttons form Editor, select System-Prefab.
 
-Pool
-Pool is a concept for optimisation of object-reusability. The idea is to store GameObjects in memory instead of destroying them. The sample of Template implementation is in Template/Samples/Pool
+## Pool
+Pool is a concept for optimisation of object-reusability. The idea is to store GameObjects in memory instead of destroying them.
+The sample of Template implementation is in Template/Samples/Pool
 
 How it works, you need to create a prefab with some scripts (out case PoolObjectMono). PoolObjectMono should implement IPoolObject.
 
 Here is example:
-
+```c#
 using Template.Scripts.Utils;
 using UnityEngine;
 
@@ -352,8 +414,11 @@ namespace Template.Samples.Pool
         }
     }
 }
+```
+
 And there is a controller that handles memory management:
 
+```c#
 using System;
 using System.Collections;
 using Template.Scripts.Utils;
@@ -386,15 +451,20 @@ namespace Template.Samples.Pool
         }
     }
 }
+
+```
+
 Node! Pool-Clearing is handled also by controller. Auto-cleaning on change scene probably will be in future releases.
 
-Ads and Analytics
-Description:
-Because publisher like to use some custom plugins there a need in abstraction of it.
+## Ads and Analytics
 
-How to use
-AdsSystem.cs and AnalyticsHandler.cs are part of InjectedMono, so you need just to inherit from InjectedMono. Example:
+#### Description:
+Because publisher like to use some custom plugins there a need in abstraction of it. 
 
+#### How to use
+AdsSystem.cs and AnalyticsHandler.cs are part of InjectedMono, so you need just to inherit from InjectedMono.
+Example:
+```c#
     public class ExampleScript : InjectedMono
     {
         [In] protected AnalyticsHandler _analyticsHandler;
@@ -427,12 +497,17 @@ AdsSystem.cs and AnalyticsHandler.cs are part of InjectedMono, so you need just 
             _analyticsHandler.SendEvent("Analytic event");
         }
     }
-Other Utils
-Money System
+```
+
+
+
+## Other Utils
+
+#### Money System
 Simple money system. Example in Template/Samples/Monetization/MoneyExample.unity.
 
 Script Example:
-
+```c#
 using Template.Scripts.DI;
 using Template.Scripts.Monetization;
 using UnityEngine.UI;
@@ -461,12 +536,17 @@ namespace Template.Samples.Monetization
         }
     }
 }
-InputNormalized
+
+```
+
+#### InputNormalized
 InputNormalized.GetMousePos() - gets normalize Input relative for Input that is independent from resolution
 
-TimeServiceMono
-Custom Update for optimisation, please you use it only if there is a need in optimisation. Any exception during IUpdate can break other scripts, please don't change deltaTime!!!
+#### TimeServiceMono
+Custom Update for optimisation, please you use it only if there is a need in optimisation. 
+Any exception during IUpdate can break other scripts, please don't change deltaTime!!!
 
+```c#
 public class ExampleScript : InjectedMono, IUpdater
 {
     [In] protected TimeServiceMono _time;
@@ -480,43 +560,51 @@ public class ExampleScript : InjectedMono, IUpdater
         //Here should be update code
     }
 }
-Effects
+```
+#### Effects
 Effects are available in Template/Effects. List of effects:
+- Outline
+- Skybox (Vadim request). Check Template/Samples/GradientSkybox
 
-Outline
-Skybox (Vadim request). Check Template/Samples/GradientSkybox
-MathUtils
+#### MathUtils
 Some basic math that is not available in Unity:
+- Rotation Wrap (0-360)
 
-Rotation Wrap (0-360)
-BasicCameraController
+#### BasicCameraController
 Default camera controller, add it when you need some camera that can be controlled by touch.
 
-Haptic
+#### Haptic
 Need to call HapticHandler.SmallHaptic();
 
-There is a default UI that handles Disable/Enable haptic, please check it prefab 'Canvas-Settings' (also present in scene Level1.unity)
+There is a default UI that handles Disable/Enable haptic, 
+please check it prefab 'Canvas-Settings' (also present in scene Level1.unity)
 
-UiHelper
+
+#### UiHelper
+
 UiHelper.IsOnUi() can be called to check if current mouse position is touching UI (with rayCastTarget enable).
 
-StringUtils
-Some string utils to work with float and int (in future support for long). Please check the script is self-explaining.
+#### StringUtils
 
-NaughtyAttributes
-This library includes NaughtyAttributes, please check there doc: https://github.com/dbrizov/NaughtyAttributes
+Some string utils to work with float and int (in future support for long).
+Please check the script is self-explaining. 
 
-Default Images
+#### NaughtyAttributes
+This library includes NaughtyAttributes, please check there doc: 
+https://github.com/dbrizov/NaughtyAttributes
+
+#### Default Images
+
 In Template/Sprites you can find default logo and some other useful sprites
 
-Restart scene in editor
+#### Restart scene in editor
 You can restart scene in editor by using CTRL+R
 
-Clear Player Pref in editor
+#### Clear Player Pref in editor
 You can clear PlayerPrefs(SaveSystem) in editor by using CTRL+DELETE
 
-Camera bounds (area that camera see, ony orthographic support)
+#### Camera bounds (area that camera see, ony orthographic support)
 Camera.OrthographicBounds()
 
-Wait System
+#### Wait System
 You can inject WaitSystem and call WaitRoutine(float seconds, System.Action callBack)
