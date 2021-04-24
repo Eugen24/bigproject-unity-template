@@ -47,6 +47,14 @@ namespace MUnityUtils.ExtensionMethods
             rigidbody.constraints = RigidbodyConstraints.FreezeAll;
         }
         /// <summary>
+        /// Freeze position
+        /// </summary>
+        /// <param name="rigidbody"></param>
+        public static void UnfreezeAll(this Rigidbody rigidbody)
+        {
+            rigidbody.constraints = RigidbodyConstraints.None;
+        }
+        /// <summary>
         /// Ratate rigidbody
         /// </summary>
         /// <param name="rigidbody"></param>
