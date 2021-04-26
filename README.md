@@ -1,7 +1,7 @@
 # Template for creating HighProject Games Easy
 
 - Download Package
-Get last release here: https://github.com/Eugen24/highproject-template/releases/tag/0.2
+Get latest release here: https://github.com/Eugen24/highproject-template/releases/tag/0.2
 
 ## General Conventions
 #### Project Conventions:
