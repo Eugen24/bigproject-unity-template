@@ -7,7 +7,7 @@ Get latest release here: https://github.com/Eugen24/highproject-template/release
 #### Project Conventions:
 - Every project should be in Assets/_Project
 - In Build settings first scene should be FirstScene.unity
-- Every scene should have System.prefab > Note! Only if you are developing Small Non Multiplayer Game
+- Every scene should have System.prefab > Note! Only if you are developing Non Multiplayer Game
 - All scriptable objects should be in Assets/_Project/Scripts/Configs
 - Git ignore: https://github.com/Eugen24/highproject-template/blob/main/.gitignore
 
