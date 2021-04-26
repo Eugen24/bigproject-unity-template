@@ -588,7 +588,7 @@ In Template/Sprites you can find default logo and some other useful sprites
 You can restart scene in editor by using CTRL+R
 
 #### Clear Player Pref in editor
-You can clear PlayerPrefs(SaveSystem) in editor by using CTRL+DELETE
+You can clear PlayerPrefs(SaveSystem) in editor by using CTRL+DELETE > Note! Delete only you saved data in PlayerPrefs!
 
 #### Camera bounds (area that camera see, ony orthographic support)
 Camera.OrthographicBounds()
