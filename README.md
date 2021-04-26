@@ -18,7 +18,7 @@ Get last release here: https://github.com/Eugen24/highproject-template/releases/
 - Pool
 - Default SDKs for publishing (Facebook, GA, etc...)
 - Other small tools for math and animations
-- MultiThread savable system
+- Easy Save - The Complete Save Data & Serialization Tool > Guides To Getting started: https://docs.moodkie.com/product/easy-save-3/es3-guides/
 - Effects
 
 ## DI
@@ -290,7 +290,7 @@ namespace Template.Samples.Signals
 You can use only structs as sending signal data. You can use structs with no fields.
 After scene is reloaded unsubscribe is done automatically, if you need to unsubscribe you can use UnSub method.
 
-## Scene Progression
+## Scene Progression > Is Working Only if you use Canvas-Prefab AllUi from Project!
 
 #### Description:
 Progression Scene is relevant only for scene. To it is attached analytics, Prefs-Save and UI. 
@@ -440,7 +440,7 @@ namespace Template.Samples.Pool
 
 ```
 
-Node! Pool-Clearing is handled also by controller. Auto-cleaning on change scene probably will be in future releases.
+Note! Pool-Clearing is handled also by controller. Auto-cleaning on change scene probably will be in future releases.
 
 ## Ads and Analytics
 
@@ -486,10 +486,10 @@ Example:
 ```
 
 
-
 ## Other Utils
 
-#### Money System
+#### Money System > Use if You Develop Simple Non Multiplayer Games (HyperCasual)!
+#### Note! Working only if you have System.prefab in scene!
 Simple money system. Example in Template/Samples/Monetization/MoneyExample.unity.
 
 Script Example:
@@ -528,7 +528,7 @@ namespace Template.Samples.Monetization
 #### InputNormalized
 InputNormalized.GetMousePos() - gets normalize Input relative for Input that is independent from resolution
 
-#### TimeServiceMono
+#### TimeServiceMono > Local Utilization Only!
 Custom Update for optimisation, please you use it only if there is a need in optimisation. 
 Any exception during IUpdate can break other scripts, please don't change deltaTime!!!
 
@@ -569,6 +569,7 @@ please check it prefab 'Canvas-Settings' (also present in scene Level1.unity)
 #### UiHelper
 
 UiHelper.IsOnUi() can be called to check if current mouse position is touching UI (with rayCastTarget enable).
+Ui Raycast also can be called/using from script.
 
 #### StringUtils
 
