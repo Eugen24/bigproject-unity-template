@@ -35,8 +35,8 @@ MonoBehaviour:
     - NaughtyWaterBuoyancy.Core
     - OEBIF
     - Tests
-    - NaughtyAttributes.Editor
     - NaughtyWaterBuoyancy.Editor
+    - NaughtyAttributes.Editor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1
