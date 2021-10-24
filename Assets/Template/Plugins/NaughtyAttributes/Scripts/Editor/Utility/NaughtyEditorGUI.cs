@@ -48,47 +48,33 @@ namespace NaughtyAttributes.Editor
 			}
 			else
 			{
-				GUIContent label = PropertyUtility.GetLabel(property);
-				bool anyDrawerAttribute = PropertyUtility.GetAttributes<DrawerAttribute>(property).Any();
-
-				if (!anyDrawerAttribute)
+				// Check if visible
+				bool visible = PropertyUtility.IsVisible(property);
+				if (!visible)
 				{
-					// Drawer attributes check for visibility, enableability and validator themselves,
-					// so if a property doesn't have a DrawerAttribute we need to check for these explicitly
-
-					// Check if visible
-					bool visible = PropertyUtility.IsVisible(property);
-					if (!visible)
-					{
-						return;
-					}
-
-					// Validate
-					ValidatorAttribute[] validatorAttributes = PropertyUtility.GetAttributes<ValidatorAttribute>(property);
-					foreach (var validatorAttribute in validatorAttributes)
-					{
-						validatorAttribute.GetValidator().ValidateProperty(property);
-					}
-
-					// Check if enabled and draw
-					EditorGUI.BeginChangeCheck();
-					bool enabled = PropertyUtility.IsEnabled(property);
-
-					using (new EditorGUI.DisabledScope(disabled: !enabled))
-					{
-						propertyFieldFunction.Invoke(rect, property, label, includeChildren);
-					}
-
-					// Call OnValueChanged callbacks
-					if (EditorGUI.EndChangeCheck())
-					{
-						PropertyUtility.CallOnValueChangedCallbacks(property);
-					}
+					return;
 				}
-				else
+
+				// Validate
+				ValidatorAttribute[] validatorAttributes = PropertyUtility.GetAttributes<ValidatorAttribute>(property);
+				foreach (var validatorAttribute in validatorAttributes)
 				{
-					// We don't need to check for enableIfAttribute
-					propertyFieldFunction.Invoke(rect, property, label, includeChildren);
+					validatorAttribute.GetValidator().ValidateProperty(property);
+				}
+
+				// Check if enabled and draw
+				EditorGUI.BeginChangeCheck();
+				bool enabled = PropertyUtility.IsEnabled(property);
+
+				using (new EditorGUI.DisabledScope(disabled: !enabled))
+				{
+					propertyFieldFunction.Invoke(rect, property, PropertyUtility.GetLabel(property), includeChildren);
+				}
+
+				// Call OnValueChanged callbacks
+				if (EditorGUI.EndChangeCheck())
+				{
+					PropertyUtility.CallOnValueChangedCallbacks(property);
 				}
 			}
 		}
@@ -133,14 +119,16 @@ namespace NaughtyAttributes.Editor
 			EditorGUI.BeginChangeCheck();
 
 			int newIndex = EditorGUI.Popup(rect, label, selectedValueIndex, displayOptions);
+			object newValue = values[newIndex];
 
-			if (EditorGUI.EndChangeCheck())
+			object dropdownValue = dropdownField.GetValue(target);
+			if (dropdownValue == null || !dropdownValue.Equals(newValue))
 			{
 				Undo.RecordObject(serializedObject.targetObject, "Dropdown");
 
 				// TODO: Problem with structs, because they are value type.
 				// The solution is to make boxing/unboxing but unfortunately I don't know the compile time type of the target object
-				dropdownField.SetValue(target, values[newIndex]);
+				dropdownField.SetValue(target, newValue);
 			}
 		}
 
@@ -279,13 +267,29 @@ namespace NaughtyAttributes.Editor
 				{
 					EditorGUILayout.Toggle(label, (bool)value);
 				}
+				else if (valueType == typeof(short))
+				{
+					EditorGUILayout.IntField(label, (short)value);
+				}
+				else if (valueType == typeof(ushort))
+				{
+					EditorGUILayout.IntField(label, (ushort)value);
+				}
 				else if (valueType == typeof(int))
 				{
 					EditorGUILayout.IntField(label, (int)value);
 				}
+				else if (valueType == typeof(uint))
+				{
+					EditorGUILayout.LongField(label, (uint)value);
+				}
 				else if (valueType == typeof(long))
 				{
 					EditorGUILayout.LongField(label, (long)value);
+				}
+				else if (valueType == typeof(ulong))
+				{
+					EditorGUILayout.TextField(label, ((ulong)value).ToString());
 				}
 				else if (valueType == typeof(float))
 				{
@@ -311,6 +315,14 @@ namespace NaughtyAttributes.Editor
 				{
 					EditorGUILayout.Vector4Field(label, (Vector4)value);
 				}
+				else if (valueType == typeof(Vector2Int))
+				{
+					EditorGUILayout.Vector2IntField(label, (Vector2Int)value);
+				}
+				else if (valueType == typeof(Vector3Int))
+				{
+					EditorGUILayout.Vector3IntField(label, (Vector3Int)value);
+				}
 				else if (valueType == typeof(Color))
 				{
 					EditorGUILayout.ColorField(label, (Color)value);
@@ -322,6 +334,10 @@ namespace NaughtyAttributes.Editor
 				else if (valueType == typeof(Rect))
 				{
 					EditorGUILayout.RectField(label, (Rect)value);
+				}
+				else if (valueType == typeof(RectInt))
+				{
+					EditorGUILayout.RectIntField(label, (RectInt)value);
 				}
 				else if (typeof(UnityEngine.Object).IsAssignableFrom(valueType))
 				{

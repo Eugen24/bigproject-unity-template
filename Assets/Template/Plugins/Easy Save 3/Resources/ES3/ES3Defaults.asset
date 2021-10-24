@@ -34,7 +34,6 @@ MonoBehaviour:
     - NaughtyAttributes.Core
     - NaughtyWaterBuoyancy.Core
     - OEBIF
-    - Tests
     - NaughtyWaterBuoyancy.Editor
     - NaughtyAttributes.Editor
     showAdvancedSettings: 0

@@ -10,7 +10,6 @@ namespace Template.Scripts.FirstScene
         public IEnumerator Start()
         {
             //just in case of some 3rd party plugins
-            yield return null;
             /*
             if (!FB.IsInitialized) {
                 // Initialize the Facebook SDK
@@ -21,9 +20,11 @@ namespace Template.Scripts.FirstScene
             }
 */
             //for facebook to give one frame
-            yield return null;
+            
             Application.targetFrameRate = 60;
             _sceneProgression.LoadNextSceneFromFirstScene();
+
+            yield return null;
         }
         /*
         private void InitCallback ()

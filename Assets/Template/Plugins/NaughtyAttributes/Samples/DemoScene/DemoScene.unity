@@ -200,18 +200,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enable1: 0
   enable2: 0
+  enum1: 0
   enableIfAll: 
   enableIfAny: 
+  enableIfEnum: 
   nest1:
     enable1: 1
     enable2: 0
+    enum1: 0
     enableIfAll: 1
     enableIfAny: 2
+    enableIfEnum: 0
     nest2:
       enable1: 1
       enable2: 1
+      enum1: 0
       enableIfAll: {x: 0.25, y: 0.75}
       enableIfAny: {x: 0.25, y: 0.75}
+      enableIfEnum: {x: 0.25, y: 0.75}
 --- !u!114 &114650326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,18 +232,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disable1: 0
   disable2: 0
+  enum1: 0
   disableIfAll: 
   disableIfAny: 
+  disableIfEnum: 
   nest1:
     disable1: 1
     disable2: 0
+    enum1: 0
     disableIfAll: 1
     disableIfAny: 2
+    disableIfEnum: 3
     nest2:
       disable1: 1
       disable2: 1
+      enum1: 0
       enableIfAll: {x: 0.25, y: 0.75}
       enableIfAny: {x: 0.25, y: 0.75}
+      enableIfEnum: {x: 0.25, y: 0.75}
 --- !u!1 &155697335
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +327,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1148579784}
-  m_RootOrder: 12
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &237121642
 MonoBehaviour:
@@ -363,7 +375,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1148579784}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &369789278
 MonoBehaviour:
@@ -464,7 +476,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1148579784}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &607441875
 MonoBehaviour:
@@ -482,7 +494,7 @@ MonoBehaviour:
   nest1:
     minMaxSlider1: {x: 0.25, y: 0.75}
     nest2:
-      minMaxSlider2: {x: 0.50000006, y: 1}
+      minMaxSlider2: {x: 6, y: 11}
 --- !u!1 &706445688
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,6 +538,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c928ea15ae74a44089beb2e534c1a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerName: Default
+  layerIndex: 4
 --- !u!1 &732714203
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +747,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1148579784}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &948946035
 MonoBehaviour:
@@ -754,6 +768,57 @@ MonoBehaviour:
       stamina: 75
   elixir: 50
   maxElixir: 100
+--- !u!1 &993534225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 993534226}
+  - component: {fileID: 993534227}
+  m_Layer: 0
+  m_Name: Layer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &993534226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993534225}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1148579784}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &993534227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993534225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460459d6ac76acd4d872f94cf444e6fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerNumber0: 5
+  layerName0: UI
+  nest1:
+    layerNumber1: 0
+    layerName1: Default
+    nest2:
+      layerNumber2: 4
+      layerName2: Water
 --- !u!1 &1139446979
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,9 +904,9 @@ Transform:
   - {fileID: 1139446980}
   - {fileID: 1552114400}
   - {fileID: 155697336}
+  - {fileID: 993534226}
   - {fileID: 607441874}
   - {fileID: 948946034}
-  - {fileID: 237121641}
   - {fileID: 1747151588}
   - {fileID: 1202167595}
   - {fileID: 892661555}
@@ -856,6 +921,7 @@ Transform:
   - {fileID: 1524906391}
   - {fileID: 1293624596}
   - {fileID: 1871127830}
+  - {fileID: 237121641}
   - {fileID: 1641427334}
   - {fileID: 1706612702}
   - {fileID: 369789277}
@@ -1224,6 +1290,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &1444377591
@@ -1269,7 +1336,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1148579784}
-  m_RootOrder: 30
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1463483879
 MonoBehaviour:
@@ -1334,18 +1401,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   show1: 0
   show2: 0
+  enum1: 0
   showIfAll: 
   showIfAny: 
+  showIfEnum: 
   nest1:
     show1: 1
     show2: 0
+    enum1: 0
     showIfAll: 0
     showIfAny: 0
+    showIfEnum: 0
     nest2:
       show1: 1
       show2: 1
+      enum1: 0
       showIfAll: {x: 0.25, y: 0.75}
       showIfAny: {x: 0.25, y: 0.75}
+      showIfEnum: {x: 0.25, y: 0.75}
 --- !u!114 &1524906393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1360,18 +1433,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hide1: 0
   hide2: 0
+  enum1: 0
   hideIfAll: 
   hideIfAny: 
+  hideIfEnum: 
   nest1:
     hide1: 1
     hide2: 0
+    enum1: 0
     hideIfAll: 0
     hideIfAny: 0
+    hideIfEnum: 0
     nest2:
       hide1: 1
       hide2: 1
+      enum1: 0
       hideIfAll: {x: 0.25, y: 0.75}
       hideIfAny: {x: 0.25, y: 0.75}
+      hideIfEnum: {x: 0.25, y: 0.75}
 --- !u!1 &1552114399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,7 +1667,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1148579784}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1706612701
 GameObject:
@@ -1619,7 +1698,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1148579784}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1706612703
 MonoBehaviour:
@@ -1633,17 +1712,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 450a05787c54e6b4fa88ffe223bcee87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  min0: 0
-  max0: 0
-  range01: 0
+  min0Int: 0
+  max0Int: 0
+  range01Float: 0
+  range01Vector2: {x: 0, y: 0}
+  range01Vector3: {x: 0, y: 0, z: 0}
+  range01Vector4: {x: 0, y: 0, z: 0, w: 0}
+  min0Vector2Int: {x: 0, y: 0}
+  max100Vector2Int: {x: 0, y: 0}
+  min0Vector3Int: {x: 0, y: 0, z: 0}
+  max100Vector3Int: {x: 0, y: 0, z: 0}
   nest1:
-    min0: 0
-    max0: 0
-    range01: 0
+    min0Int: 0
+    max0Int: 0
+    range01Float: 0
+    range01Vector2: {x: 0, y: 0}
+    range01Vector3: {x: 0, y: 0, z: 0}
+    range01Vector4: {x: 0, y: 0, z: 0, w: 0}
+    min0Vector2Int: {x: 0, y: 0}
+    max100Vector2Int: {x: 0, y: 0}
+    min0Vector3Int: {x: 0, y: 0, z: 0}
+    max100Vector3Int: {x: 0, y: 0, z: 0}
     nest2:
-      min0: 0
-      max0: 0
-      range01: 0
+      min0Int: 0
+      max0Int: 0
+      range01Float: 0
+      range01Vector2: {x: 0, y: 0}
+      range01Vector3: {x: 0, y: 0, z: 0}
+      range01Vector4: {x: 0, y: 0, z: 0, w: 0}
+      min0Vector2Int: {x: 0, y: 0}
+      max100Vector2Int: {x: 0, y: 0}
+      min0Vector3Int: {x: 0, y: 0, z: 0}
+      max100Vector3Int: {x: 0, y: 0, z: 0}
 --- !u!1 &1747151587
 GameObject:
   m_ObjectHideFlags: 0
